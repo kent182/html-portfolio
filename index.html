@@ -7,34 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!------NAVBAR SECTION---------->
     <nav>
         <div class="navbar-container">
-        <div class="top-row">
-            <div class="logo logo-animated" id="logo-text">CARS</div>
-            <div class="toggler" onclick="toggleMenu()">&#9776</div>
-        </div>
-        <div class="menu" id="menu">
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#project" class="nav-link">Projects</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
+            <div class="top-row">
+                <div class="logo logo-animated" id="logo-text">CARS</div>
+                <div class="toggler" onclick="toggleMenu()">&#9776</div>
+            </div>
+            <div class="menu" id="menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button onclick="openPopup()" class="sign-btn">Sign Up</button>
+            </div>
         </div>
     </nav>
+
+    <!------SLIDER SECTION---------->
     <div class="hero">
         <div class="slider-container">
             <div class="slider-track" id="sliderTrack">
                 <div class="slide" style="background-image: url('src/car-1.jpg');">
-                    <h2>Explore Nature</h2>
-                </div>
-                <div class="slide" style="background-image: url('src/car-2.webp');">
-                    <h2>Urban Life</h2>
-                </div>
-                <div class="slide" style="background-image: url('src/car-3.webp');">
                     <h2>Future Tech</h2>
                 </div>
+                <div class="slide" style="background-image: url('src/car-2.webp');">
+                    <h2>Explore Nature</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-3.webp');">
+                    <h2>Urban Life</h2>
+                </div>
                 <div class="slide" style="background-image: url('src/car-4.webp');">
-                    <h2>Build Modern</h2>
+                    <h2>Building New</h2>
                 </div>
             </div>
 
@@ -44,22 +48,110 @@
             <div class="dots" id="dotsContainer"></div>
         </div>
     </div>
+
+    <!------SIGN-UP SECTION---------->
+    <div class="popup" id="signupPopup" style="z-index: 4;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button onclick="submitForm()">Register</button> 
+            <p class="sign-up-links" style="padding-top: 10px;">
+                <a href="#">Forgot Password</a> | 
+                <a href="#" style="margin-left: 5px;">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!------FEATURES SECTION---------->
+    <section id="features">
+        <h2>My Projects</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Future Tech</h3>
+                    <img src="src/car-1.jpg" alt="car">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
+                        voluptatibus laudantium eligendi voluptates vitae, tempore maiores, 
+                        nobis magni aut molestiae ullam.
+                    </p>
+                </div>
+                <a href="#" class="view-details">View more details</a>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Explore Nature</h3>
+                    <img src="src/car-2.webp" alt="car">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
+                        voluptatibus laudantium eligendi voluptates vitae, tempore maiores, 
+                        nobis magni aut molestiae ullam totam amet in obcaecati commodi quidem. Qui.
+                    </p>
+                </div>
+                <a href="#" class="view-details">View more details</a>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Urban Life</h3>
+                    <img src="src/car-3.webp" alt="car">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
+                        voluptatibus laudantium eligendi voluptates.
+                    </p>
+                </div>
+                <a href="#" class="view-details">View more details</a>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Building New</h3>
+                    <img src="src/car-4.webp" alt="car">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </p>
+                </div>
+                <a href="#" class="view-details">View more details</a>
+            </div>
+        </div>
+    </section>
+
+    <!------ABOUT SECTION---------->
     <section id="about">
         <h2>About Me</h2>
         <p>
-            I'm a passionate Frontend Developer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
+            I'm a passionate Software Engineer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
             complex problems and building modern, responsive web applications that deliver real value.
         </p>
         <p>
             My goal is to continouosly grow as a developer by exploring new technologies and contributing to impactful projects. 
-            Whether it's frontend design or full-stack development, I strive to deliver clean, efficient, and engaging user experiences.
+            Whether it's frontend design or full -stack development, I strive to deliver clean, efficient, and engaging user experiences.
         </p>
     </section>
-    <section id="contact">
+
+    <!------CONTACT SECTION---------->
+    <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
-        <p>Email me at: <a href="mailto:norries.kent@gmail.com">norries.kent@gmail.com</a></p>
-        <p>Mobile #: 09625946752</p>
+        <p>You can reach me through the following:</p>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> norries.kent@gmail.com</p>
+            <p><strong>Phone:</strong> +6396 2594 6752</p>
+            <p><strong>Location:</strong> Tipolo, Mandaue City, Philippines</p>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
+
+    <!------FOOTER SECTION---------->
     <footer>
         <p>&copy; 2025 My Portfolio | All Rights Reserved</p>
     </footer>
@@ -67,5 +159,6 @@
     <script src="slider.js"></script>
     <script src="toggleMenu.js"></script>
     <script src="scroll-menu.js"></script>
+    <script src="sign-up.js"></script>
 </body>
 </html>
