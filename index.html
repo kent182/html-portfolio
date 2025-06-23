@@ -2,38 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Norries Kent Portfolio</h1>
-    <h2>I'm a Web Developer</h2>
-    <hr />
+    <nav>
+        <div class="navbar-container">
+        <div class="top-row">
+            <div class="logo logo-animated" id="logo-text">CARS</div>
+            <div class="toggler" onclick="toggleMenu()">&#9776</div>
+        </div>
+        <div class="menu" id="menu">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#project" class="nav-link">Projects</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        </div>
+    </nav>
+    <div class="hero">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide" style="background-image: url('src/car-1.jpg');">
+                    <h2>Explore Nature</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-2.webp');">
+                    <h2>Urban Life</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-3.webp');">
+                    <h2>Future Tech</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-4.webp');">
+                    <h2>Modern Cars</h2>
+                </div>
+            </div>
 
-    <h2><a href="./public/my-movie.html">Movie Ranking Project</a></h2>
-    <h3>The Best Movie According to Kent</h3>
-    <h4>My top 3 Action Movies of all Time</h4>
-    <hr width="400" align="left"/>
-    <h4>Jason Bourne</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <h4>John Wick</h4>
-    <p>Curabitur elementum sagittis mollis.</p>
-    <h4>Taken</h4>
-    <p>Donec euismod vestibulum arcu, a blandit metus mattis ultrices.</p>
-    <hr />
+            <button class="nav-button prev" id="prevBtn">&#10094</button>
+            <button class="nav-button next" id="nextBtn">&#10095</button>
 
-    <h2><a href="./public/my-birthday.html">Birthday Invite Project</a></h2>
-    <h3>It's my Birthday</h3>
-    <h4>On the 5th September</h4>
-    <img src="./assets/images/my-cake.jpg" height="200" alt="Birthday Cake" />
-    <h4>What to bring:</h4>
-    <p>
-        <ul>
-            <li>Gift</li>
-            <li>Ballons</li>
-            <li>Cake</li>
-        </ul>
-    </p>
-    <hr />
-    <h3><a href="./public/my-about.html">About Me</a> | <a href="./public/my-contact.html">Contact Me</a></h3>
+            <div class="dots" id="dotsContainer"></div>
+        </div>
+    </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm a passionate Software Engineer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
+            complex problems and building modern, responsive web applications that deliver real value.
+        </p>
+        <p>
+            My goal is to continouosly grow as a developer by exploring new technologies and contributing to impactful projects. 
+            Whether it's frontend design or full -stack development, I strive to deliver clean, efficient, and engaging user experiences.
+        </p>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email me at: <a href="mailto:norries.kent@gmail.com">norries.kent@gmail.com</a></p>
+        <p>Mobile #: 09625946752</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 My Portfolio | All Rights Reserved</p>
+    </footer>
+    <script src="logo.js"></script>
+    <script src="slider.js"></script>
+    <script src="toggleMenu.js"></script>
+    <script src="scroll-menu.js"></script>
 </body>
 </html>
