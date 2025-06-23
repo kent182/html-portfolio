@@ -9,6 +9,6 @@ function closePopup() {
 }
 
 function submitForm() {
-    alert('Signup submitted!');
+    alert('Hi! Ailynerz_1993');
     closePopup();
 }
