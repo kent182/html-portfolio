@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <!------SIGN-UP SECTION---------->
+    <!------SIGN-UP SECTION (POP-UP)---------->
     <div class="popup" id="signupPopup" style="z-index: 4;">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -66,59 +66,77 @@
     </div>
 
     <!------FEATURES SECTION---------->
+
+    <div class="popup rating-box" id="ratingPopup" style="z-index: 4;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="rateClose()">&times;</span>
+            <h2>Rate this Product</h2>
+            <div class="stars" id="starContainer">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <button id="submitRating" onclick="submitRate()">Submit</button>
+            <div class="message" id="messageBox"></div>
+        </div>
+    </div>
+
     <section id="features">
         <h2>My Projects</h2>
         <div class="cards">
             <div class="card">
+                <img src="src/car-1.jpg" alt="Product Image">
                 <div class="card-content">
-                    <h3>Future Tech</h3>
-                    <img src="src/car-1.jpg" alt="car">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
-                        voluptatibus laudantium eligendi voluptates vitae, tempore maiores, 
-                        nobis magni aut molestiae ullam.
-                    </p>
+                    <h2>Future Tect</h2>
+                    <p class="description">A stylish and fuel-efficient compact car, perfect for daily commutes and weekend getaways.</p>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+                    </div>
+                    <div class="price">$7.20</div>
+                    <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
-                <a href="#" class="view-details">View more details</a>
             </div>
             <div class="card">
+                <img src="src/car-2.webp" alt="Product Image">
                 <div class="card-content">
-                    <h3>Explore Nature</h3>
-                    <img src="src/car-2.webp" alt="car">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
-                        voluptatibus laudantium eligendi voluptates vitae, tempore maiores, 
-                        nobis magni aut molestiae ullam totam amet in obcaecati commodi quidem. Qui.
-                    </p>
+                    <h2>Explore Nature</h2>
+                    <p class="description">A spacious and rugged SUV designed for family adventures and off-road capability.</p>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+                    </div>
+                    <div class="price">$1.89</div>
+                    <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
-                <a href="#" class="view-details">View more details</a>
             </div>
             <div class="card">
+                <img src="src/car-3.webp" alt="Product Image">
                 <div class="card-content">
-                    <h3>Urban Life</h3>
-                    <img src="src/car-3.webp" alt="car">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ut soluta,
-                        voluptatibus laudantium eligendi voluptates.
-                    </p>
+                    <h2>Urban Life</h2>
+                    <p class="description">A sleek, high-performance sports car built for speed, agility, and head-turning design.</p>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 5 out of 5 stars -->
+                    </div>
+                    <div class="price">$5.72</div>
+                    <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
-                <a href="#" class="view-details">View more details</a>
             </div>
             <div class="card">
+                <img src="src/car-4.webp" alt="Product Image">
                 <div class="card-content">
-                    <h3>Building New</h3>
-                    <img src="src/car-4.webp" alt="car">
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </p>
+                    <h2>Building New</h2>
+                    <p class="description">A premium sedan offering top-tier comfort, advanced tech features, and powerful performance.</p>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+                    </div>
+                    <div class="price">$9.55</div>
+                    <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
-                <a href="#" class="view-details">View more details</a>
             </div>
         </div>
     </section>
-
+    
     <!------ABOUT SECTION---------->
     <section id="about">
         <h2>About Me</h2>
@@ -160,5 +178,6 @@
     <script src="toggleMenu.js"></script>
     <script src="scroll-menu.js"></script>
     <script src="sign-up.js"></script>
+    <script src="rating.js"></script>
 </body>
 </html>
