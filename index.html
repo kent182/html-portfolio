@@ -16,7 +16,16 @@
             </div>
             <div class="menu" id="menu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#features" class="nav-link">Projects</a>
+                <a href="#" class="nav-link dropbtn" onclick="dropdownMenu()">My Projects</a>
+                    <div class="dropdown">
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="projects/eCommerce.html">E-Commerce Demo</a>
+                            <a href="projects/todoList.html">Todo List</a>
+                            <a href="projects/calculator.html">Calculator</a>
+                        </div>
+                    </div>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#services" class="nav-link">Services</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button onclick="openPopup()" class="sign-btn">Sign Up</button>
@@ -84,17 +93,17 @@
     </div>
 
     <section id="features">
-        <h2>My Projects</h2>
+        <h2>Car Models</h2>
         <div class="cards">
             <div class="card">
                 <img src="src/car-1.jpg" alt="Product Image">
                 <div class="card-content">
-                    <h2>Future Tect</h2>
+                    <h2>Future Tech</h2>
                     <p class="description">A stylish and fuel-efficient compact car, perfect for daily commutes and weekend getaways.</p>
                     <div class="stars" onclick="rateOpen()">
                         &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
                     </div>
-                    <div class="price">$7.20</div>
+                    <div class="price">Rate 4.1</div>
                     <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
             </div>
@@ -106,7 +115,7 @@
                     <div class="stars" onclick="rateOpen()">
                         &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
                     </div>
-                    <div class="price">$1.89</div>
+                    <div class="price">Rate 4.0</div>
                     <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
             </div>
@@ -118,7 +127,7 @@
                     <div class="stars" onclick="rateOpen()">
                         &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 5 out of 5 stars -->
                     </div>
-                    <div class="price">$5.72</div>
+                    <div class="price">Rate 5.0</div>
                     <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
             </div>
@@ -130,7 +139,7 @@
                     <div class="stars" onclick="rateOpen()">
                         &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
                     </div>
-                    <div class="price">$9.55</div>
+                    <div class="price">Rate 4.2</div>
                     <button onclick="alert('Showing more details...')">View Details</button>
                 </div>
             </div>
@@ -141,7 +150,7 @@
     <section id="about">
         <h2>About Me</h2>
         <p>
-            I'm a passionate Software Engineer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
+            I'm a passionate Front-End Developer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
             complex problems and building modern, responsive web applications that deliver real value.
         </p>
         <p>
@@ -179,5 +188,6 @@
     <script src="scroll-menu.js"></script>
     <script src="sign-up.js"></script>
     <script src="rating.js"></script>
+    <script src="dropdown.js"></script>
 </body>
 </html>

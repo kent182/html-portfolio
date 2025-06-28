@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      color: #4CAF50;
+    }
+    #new-task-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    #new-task-input {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    #new-task-form button {
+      padding: 0.5rem 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .task-left {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      gap: 0.5rem;
+    }
+    .task-text {
+      flex: 1;
+    }
+    .task-text.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .actions button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+    input.edit-input {
+      flex: 1;
+      padding: 0.25rem;
+    }
+    p{ text-align: center; }
+    p a{
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <p><a href="../index.html">← Home</a></p>
+<h1>📋 To-Do List</h1>
+
+<form id="new-task-form">
+  <input type="text" id="new-task-input" placeholder="Add a new task..." required />
+  <button type="submit">Add</button>
+</form>
+
+<ul id="task-list"></ul>
+
+<script>
+  const form = document.getElementById('new-task-form');
+  const input = document.getElementById('new-task-input');
+  const taskList = document.getElementById('task-list');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (text !== '') {
+      addTask(text);
+      input.value = '';
+    }
+  });
+
+  function addTask(text) {
+    const li = document.createElement('li');
+
+    const left = document.createElement('div');
+    left.className = 'task-left';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('change', () => {
+      taskSpan.classList.toggle('completed', checkbox.checked);
+    });
+
+    const taskSpan = document.createElement('span');
+    taskSpan.className = 'task-text';
+    taskSpan.textContent = text;
+
+    left.appendChild(checkbox);
+    left.appendChild(taskSpan);
+
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+
+    const editBtn = document.createElement('button');
+    editBtn.innerHTML = '✏️';
+    editBtn.addEventListener('click', () => {
+      if (editBtn.innerHTML === '✏️') {
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.value = taskSpan.textContent;
+        editInput.className = 'edit-input';
+        left.replaceChild(editInput, taskSpan);
+        editBtn.innerHTML = '💾';
+      } else {
+        const newText = left.querySelector('.edit-input').value.trim();
+        if (newText) {
+          taskSpan.textContent = newText;
+          left.replaceChild(taskSpan, left.querySelector('.edit-input'));
+          editBtn.innerHTML = '✏️';
+        }
+      }
+    });
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '🗑️';
+    deleteBtn.addEventListener('click', () => li.remove());
+
+    actions.appendChild(editBtn);
+    actions.appendChild(deleteBtn);
+
+    li.appendChild(left);
+    li.appendChild(actions);
+    taskList.appendChild(li);
+  }
+</script>
+
+</body>
+</html>
