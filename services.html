@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 2rem;
+    }
+
+    .service-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    .service-card p {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Our Car Services</h1>
+</header>
+
+<section class="services-container">
+  <div class="service-card">
+    <h3>Oil Change</h3>
+    <p>Quick and affordable oil change with top-grade motor oil.</p>
+  </div>
+  <div class="service-card">
+    <h3>Car Wash</h3>
+    <p>Exterior and interior car wash with premium cleaning products.</p>
+  </div>
+  <div class="service-card">
+    <h3>Brake Inspection</h3>
+    <p>Complete brake check and pad replacement if necessary.</p>
+  </div>
+  <div class="service-card">
+    <h3>Engine Diagnostics</h3>
+    <p>Advanced scanning tools to identify engine problems quickly.</p>
+  </div>
+  <div class="service-card">
+    <h3>Battery Replacement</h3>
+    <p>High-performance battery installation for all vehicle models.</p>
+  </div>
+  <div class="service-card">
+    <h3>Air Conditioning Repair</h3>
+    <p>Stay cool with our AC inspection, cleaning, and repair services.</p>
+  </div>
+</section>
+
+</body>
+</html>

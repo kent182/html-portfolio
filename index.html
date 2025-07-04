@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="main.css">
+    <style>
+.btn-3d {
+  padding: 15px 30px;
+  font-size: 16px;
+  color: white;
+  background: #3498db;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 0 #2980b9;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn-3d:active {
+  box-shadow: 0 2px 0 #2980b9;
+  transform: translateY(3px);
+}
+
+</style>
 </head>
 <body>
     <!------NAVBAR SECTION---------->
@@ -16,7 +36,7 @@
             </div>
             <div class="menu" id="menu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#" class="nav-link dropbtn" onclick="dropdownMenu()">My Projects</a>
+                <a href="#" class="nav-link dropbtn" onclick="dropdownMenu()">Projects &#9662;</a>
                     <div class="dropdown">
                         <div id="myDropdown" class="dropdown-content">
                             <a href="projects/eCommerce.html">E-Commerce Demo</a>
@@ -25,10 +45,10 @@
                         </div>
                     </div>
                 <a href="#features" class="nav-link">Features</a>
-                <a href="#services" class="nav-link">Services</a>
+                <a href="services.html" class="nav-link">Services</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <button onclick="openPopup()" class="sign-btn">Sign Up</button>
+                <a onclick="openLogin()" id="signUp-link">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -58,24 +78,44 @@
         </div>
     </div>
 
-    <!------SIGN-UP SECTION (POP-UP)---------->
-    <div class="popup" id="signupPopup" style="z-index: 4;">
-        <div class="popup-content">
+        
+    <div class="popup" id="signupPopup" style="z-index: 3;">
+
+        <!------SIGN-UP SECTION (POP-UP)---------->
+        <div class="popup-content" id="signupForm" style="display: none;">
             <span class="close-btn" onclick="closePopup()">&times;</span>
             <h2>Sign Up</h2>
-            <input type="text" placeholder="Full Name" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <button onclick="submitForm()">Register</button> 
+            <form onsubmit="return validateSignup(event)">
+                <input type="text" id="signup-name" placeholder="Full Name" required />
+                <input type="email" id="signup-email" placeholder="Email" required />
+                <input type="password" id="signup-password" placeholder="Password" required />
+                <button type="submit">Register</button> 
+            </form>
+            <div class="sign-up-links" style="padding-top: 10px;">
+                <a href="#">Forgot Password</a> | 
+                <span href="#" style="margin-left: 5px;" onclick="switchToLogin()">Login</span>
+            </div>
+        </div>
+
+        <!------LOGIN SECTION (POP-UP)---------->
+        <div class="popup-content" id="loginForm" style="display: none;">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Login</h2>
+            <form id="signupForm" onsubmit="return validateLogin(event)">
+                <input type="email" id="login-email" placeholder="Email" required />
+                <input type="password" id="login-password" placeholder="Password" required />
+                <button type="submit">Login</button> 
+            </form>
             <p class="sign-up-links" style="padding-top: 10px;">
                 <a href="#">Forgot Password</a> | 
-                <a href="#" style="margin-left: 5px;">Login</a>
+                <a href="#" style="margin-left: 5px;" onclick="switchToSignup()">Sign Up</a>
             </p>
         </div>
     </div>
 
     <!------FEATURES SECTION---------->
 
+    <!-- POP-UP -->
     <div class="popup rating-box" id="ratingPopup" style="z-index: 4;">
         <div class="popup-content">
             <span class="close-btn" onclick="rateClose()">&times;</span>
@@ -92,55 +132,80 @@
         </div>
     </div>
 
+    <!-- CARDS FEATURES ------------->
     <section id="features">
-        <h2>Car Models</h2>
+        <h2>Features</h2>
         <div class="cards">
-            <div class="card">
-                <img src="src/car-1.jpg" alt="Product Image">
-                <div class="card-content">
-                    <h2>Future Tech</h2>
-                    <p class="description">A stylish and fuel-efficient compact car, perfect for daily commutes and weekend getaways.</p>
-                    <div class="stars" onclick="rateOpen()">
-                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/tesla.jpg" alt="Tesla">
+                    <div class="car-title">Tesla</div>
+                    <p class="car-desc">Electric vehicle pioneer offering high acceleration, minimalist design, and cutting-edge technology. 
+                        Features include Autopilot, over-the-air updates.</p>
+                    <div class="car-price">$79,990</div>
+                    <div class="car-specs">
+                        <div>⚡ 396 mi</div>
+                        <div>🚀 1.99s</div>
+                        <div>🔋 Dual Motor</div>
                     </div>
-                    <div class="price">Rate 4.1</div>
-                    <button onclick="alert('Showing more details...')">View Details</button>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
                 </div>
             </div>
-            <div class="card">
-                <img src="src/car-2.webp" alt="Product Image">
-                <div class="card-content">
-                    <h2>Explore Nature</h2>
-                    <p class="description">A spacious and rugged SUV designed for family adventures and off-road capability.</p>
-                    <div class="stars" onclick="rateOpen()">
-                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/porsche.webp" alt="Tesla">
+                    <div class="car-title">Porsche</div>
+                    <p class="car-desc">Luxury performance brand famed for precise handling, turbocharged engines, and iconic design. 
+                        Models like the 911 and Cayenne feature high-end interiors.</p>
+                    <div class="car-price">$59,000</div>
+                    <div class="car-specs">
+                        <div>⚡ 220 mi</div>
+                        <div>🚀 2.80s</div>
+                        <div>🔋 Dual Motor</div>
                     </div>
-                    <div class="price">Rate 4.0</div>
-                    <button onclick="alert('Showing more details...')">View Details</button>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
                 </div>
             </div>
-            <div class="card">
-                <img src="src/car-3.webp" alt="Product Image">
-                <div class="card-content">
-                    <h2>Urban Life</h2>
-                    <p class="description">A sleek, high-performance sports car built for speed, agility, and head-turning design.</p>
-                    <div class="stars" onclick="rateOpen()">
-                        &#9733;&#9733;&#9733;&#9733;&#9733; <!-- 5 out of 5 stars -->
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/mustang.jpg" alt="Tesla">
+                    <div class="car-title">Mustang</div>
+                    <p class="car-desc">Iconic American muscle car known for powerful engines, aggressive styling, and rear-wheel drive. 
+                        Offers V8 performance, driver-assist features.</p>
+                    <div class="car-price">$59,995</div>
+                    <div class="car-specs">
+                        <div>⚡ 270 mi</div>
+                        <div>🚀 1.89s</div>
+                        <div>🔋 Dual Motor</div>
                     </div>
-                    <div class="price">Rate 5.0</div>
-                    <button onclick="alert('Showing more details...')">View Details</button>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
                 </div>
             </div>
-            <div class="card">
-                <img src="src/car-4.webp" alt="Product Image">
-                <div class="card-content">
-                    <h2>Building New</h2>
-                    <p class="description">A premium sedan offering top-tier comfort, advanced tech features, and powerful performance.</p>
-                    <div class="stars" onclick="rateOpen()">
-                        &#9733;&#9733;&#9733;&#9733;&#9734; <!-- 4 out of 5 stars -->
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/chevrolet.jpg" alt="Tesla">
+                    <div class="car-title">Chevrolet</div>
+                    <p class="car-desc">Known for reliability, strong performance, and features like Chevy MyLink infotainment, advanced safety tech,
+                        and efficient engine options.</p>
+                    <div class="car-price">$39,990</div>
+                    <div class="car-specs">
+                        <div>⚡ 400 mi</div>
+                        <div>🚀 4.59s</div>
+                        <div>🔋 Dual Motor</div>
                     </div>
-                    <div class="price">Rate 4.2</div>
-                    <button onclick="alert('Showing more details...')">View Details</button>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
                 </div>
             </div>
         </div>
@@ -180,6 +245,30 @@
 
     <!------FOOTER SECTION---------->
     <footer>
+        <div class="icon-container">
+            <div style="display: flex; flex-direction: column;">
+                <span style="padding-top: 12px;">Follow me</span>
+                <div class="social-icons">
+                    <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <!--a href="#" class="x" title="X"><i class="fab fa-twitter"></i></a-->
+                    <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="pinterest" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="google" title="Google+"><i class="fab fa-google-plus-g"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="link-pages">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
         <p>&copy; 2025 My Portfolio | All Rights Reserved</p>
     </footer>
     <script src="logo.js"></script>
@@ -189,5 +278,6 @@
     <script src="sign-up.js"></script>
     <script src="rating.js"></script>
     <script src="dropdown.js"></script>
+    <script src="card.js"></script>
 </body>
 </html>
