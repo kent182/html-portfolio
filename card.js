@@ -4,16 +4,7 @@ const containers = document.querySelectorAll('.card-container');
       const card = container.querySelector('.car-card');
 
       container.addEventListener('mousemove', e => {
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = -(y - centerY) / 15;
-        const rotateY = (x - centerX) / 15;
-
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.transform = `translateY(-10px) scale(1.03)`;
       });
 
       container.addEventListener('mouseleave', () => {

@@ -4,27 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
     <style>
-.btn-3d {
-  padding: 15px 30px;
-  font-size: 16px;
-  color: white;
-  background: #3498db;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 5px 0 #2980b9;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
+.icon-container {
+    padding: 20px;
+    text-align: center;
 }
 
-.btn-3d:active {
-  box-shadow: 0 2px 0 #2980b9;
-  transform: translateY(3px);
+.icon-container span {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
+.social-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 16px;
+    flex-direction: row;
+}
+
+.social-icons a {
+    font-size: 32px;
+    color: #555;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.social-icons a:hover {
+    animation: bounce 0.6s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    60% { transform: translateY(5px); }
+}
+
+/* Icon colors on hover */
+.social-icons a.facebook:hover { color: #1877F2; text-shadow: 0 0 20px #1877F2; }
+.social-icons a.instagram:hover { color: #C13584; text-shadow: 0 0 20px #C13584; }
+.social-icons a.tiktok:hover { color: #fff; text-shadow: 0 0 20px #fff; }
+.social-icons a.linkedin:hover { color: #0077B5; text-shadow: 0 0 20px #0077B5; }
+.social-icons a.pinterest:hover { color: #E60023; text-shadow: 0 0 20px #E60023; }
+.social-icons a.youtube:hover { color: #FF0000; text-shadow: 0 0 20px #FF0000; }
+.social-icons a.google:hover { color: #DB4437; text-shadow: 0 0 20px #DB4437; }
+.social-icons a.x:hover { color: #000; text-shadow: 0 0 20px #000; }
+.social-icons a.threads:hover { color: #000; text-shadow: 0 0 20px #000; }
+
+/* Mobile: smaller icons, no scroll, tight spacing */
+@media (max-width: 600px) {
+    .social-icons {
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+
+    .social-icons a {
+        font-size: 22px;
+        padding: 6px;
+    }
+
+    .icon-container span {
+        font-size: 15px;
+    }
+}
 </style>
+
+
 </head>
 <body>
     <!------NAVBAR SECTION---------->
@@ -91,7 +141,7 @@
                 <input type="password" id="signup-password" placeholder="Password" required />
                 <button type="submit">Register</button> 
             </form>
-            <div class="sign-up-links" style="padding-top: 10px;">
+            <div class="sign-up-links">
                 <a href="#">Forgot Password</a> | 
                 <span href="#" style="margin-left: 5px;" onclick="switchToLogin()">Login</span>
             </div>
@@ -106,7 +156,7 @@
                 <input type="password" id="login-password" placeholder="Password" required />
                 <button type="submit">Login</button> 
             </form>
-            <p class="sign-up-links" style="padding-top: 10px;">
+            <p class="sign-up-links">
                 <a href="#">Forgot Password</a> | 
                 <a href="#" style="margin-left: 5px;" onclick="switchToSignup()">Sign Up</a>
             </p>
@@ -194,7 +244,7 @@
                 <div class="car-card" id="popCard">
                     <img src="src/chevrolet.jpg" alt="Tesla">
                     <div class="car-title">Chevrolet</div>
-                    <p class="car-desc">Known for reliability, strong performance, and features like Chevy MyLink infotainment, advanced safety tech,
+                    <p class="car-desc">Known for reliability and strong performance, and features like Chevy MyLink infotainment, advanced safety tech,
                         and efficient engine options.</p>
                     <div class="car-price">$39,990</div>
                     <div class="car-specs">
@@ -245,21 +295,21 @@
 
     <!------FOOTER SECTION---------->
     <footer>
-        <div class="icon-container">
-            <div style="display: flex; flex-direction: column;">
-                <span style="padding-top: 12px;">Follow me</span>
-                <div class="social-icons">
-                    <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <!--a href="#" class="x" title="X"><i class="fab fa-twitter"></i></a-->
-                    <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="pinterest" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                    <a href="#" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="google" title="Google+"><i class="fab fa-google-plus-g"></i></a>
-                </div>
+        <div class="icon-container"> 
+            <span>Follow me</span>
+            <div class="social-icons">
+                <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="x" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" class="threads" title="Threads"><i class="fab fa-threads"></i></a>
+                <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="pinterest" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="#" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="google" title="Google+"><i class="fab fa-google-plus-g"></i></a>
             </div>
         </div>
+
         <div class="link-pages">
             <ul>
                 <li><a href="#">Home</a></li>
