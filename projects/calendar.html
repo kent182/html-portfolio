@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Calendar</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+        background: #f2f2f2;
+        }
+
+        .calendar {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #ccc;
+        width: 350px;
+        overflow: hidden;
+        }
+
+        .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background: #007bff;
+        color: white;
+        }
+
+        .header button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+        }
+
+        .weekdays, .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        }
+
+        .weekdays div {
+        padding: 10px;
+        background: #e9ecef;
+        font-weight: bold;
+        }
+
+        .days div {
+        padding: 15px;
+        border: 1px solid #eee;
+        cursor: pointer;
+        }
+
+        .days div:hover {
+        background: #d0ebff;
+        }
+
+        .days .today {
+        background: #74c0fc;
+        color: white;
+        font-weight: bold;
+        }
+      h2 a{
+        display: block;
+        text-align: center;
+        text-decoration: none;
+      }
+  </style>
+</head>
+<body>
+  <div class="calendarContainer">
+    <h2><a href="../home.html">← Home</a></h2>
+    <div class="calendar">
+      <div class="header">
+        <button id="prev">❮</button>
+        <h2 id="monthYear"></h2>
+        <button id="next">❯</button>
+      </div>
+      <div class="weekdays">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+      </div>
+      <div class="days" id="calendarDays"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+        const calendarDays = document.getElementById("calendarDays");
+        const monthYear = document.getElementById("monthYear");
+        const prevBtn = document.getElementById("prev");
+        const nextBtn = document.getElementById("next");
+
+        let date = new Date();
+
+        function renderCalendar() {
+        const year = date.getFullYear();
+        const month = date.getMonth();
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const totalDays = new Date(year, month + 1, 0).getDate();
+
+        monthYear.textContent = date.toLocaleString("default", {
+            month: "long",
+            year: "numeric"
+        });
+
+        calendarDays.innerHTML = "";
+
+        // Fill in blank days
+        for (let i = 0; i < firstDay; i++) {
+            const blank = document.createElement("div");
+            calendarDays.appendChild(blank);
+        }
+
+        for (let day = 1; day <= totalDays; day++) {
+            const dayDiv = document.createElement("div");
+            dayDiv.textContent = day;
+
+            // Highlight today
+            const today = new Date();
+            if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+            ) {
+            dayDiv.classList.add("today");
+            }
+
+            dayDiv.addEventListener("click", () => {
+            const note = prompt(`Add event for ${month + 1}/${day}/${year}:`);
+            if (note) {
+                alert(`Saved: ${note}`);
+                // You can store this in memory or localStorage
+            }
+            });
+
+            calendarDays.appendChild(dayDiv);
+        }
+        }
+
+        prevBtn.onclick = () => {
+        date.setMonth(date.getMonth() - 1);
+        renderCalendar();
+        };
+
+        nextBtn.onclick = () => {
+        date.setMonth(date.getMonth() + 1);
+        renderCalendar();
+        };
+
+        renderCalendar();
+  </script>
+</body>
+</html>

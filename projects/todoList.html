@@ -9,6 +9,8 @@
       font-family: Arial, sans-serif;
       padding: 1rem;
       background: #f2f2f2;
+      display: flex;
+      justify-content: center;
     }
     h1 {
       text-align: center;
@@ -75,19 +77,23 @@
       font-size: 1.5rem;
       font-weight: bold;
     }
+    .toDoContainer{
+      width: 50%;
+    }
   </style>
 </head>
 <body>
-  <p><a href="../index.html">← Home</a></p>
-<h1>📋 To-Do List</h1>
+  <div class="toDoContainer">
+    <p><a href="../home.html">← Home</a></p>
+    <h1>📋 To-Do List</h1>
 
-<form id="new-task-form">
-  <input type="text" id="new-task-input" placeholder="Add a new task..." required />
-  <button type="submit">Add</button>
-</form>
+    <form id="new-task-form">
+      <input type="text" id="new-task-input" placeholder="Add a new task..." required />
+      <button type="submit">Add</button>
+    </form>
 
-<ul id="task-list"></ul>
-
+    <ul id="task-list"></ul>
+  </div>
 <script>
   const form = document.getElementById('new-task-form');
   const input = document.getElementById('new-task-input');

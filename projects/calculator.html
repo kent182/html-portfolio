@@ -80,7 +80,7 @@ button.equal {
   </style>
 </head>
 <body>
-  <h2><a href="../index.html">← Home</a></h2>
+  <h2><a href="../home.html">← Home</a></h2>
   <div class="calculator">
     <input type="text" id="display" disabled />
     <div class="buttons">
@@ -108,58 +108,59 @@ button.equal {
       <button onclick="appendValue('.')">.</button>
     </div>
   </div>
+
   <script>
-    
+        
     let justEvaluated = false;
 
-function appendValue(val) {
-  const display = document.getElementById("display");
-  if (justEvaluated && /[0-9.]/.test(val)) {
-    display.value = val;
-  } else {
-    display.value += val;
-  }
-  justEvaluated = false;
-}
+    function appendValue(val) {
+      const display = document.getElementById("display");
+      if (justEvaluated && /[0-9.]/.test(val)) {
+        display.value = val;
+      } else {
+        display.value += val;
+      }
+      justEvaluated = false;
+    }
 
-function clearDisplay() {
-  document.getElementById("display").value = "";
-  justEvaluated = false;
-}
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+      justEvaluated = false;
+    }
 
-function deleteLast() {
-  const disp = document.getElementById("display");
-  disp.value = disp.value.slice(0, -1);
-}
+    function deleteLast() {
+      const disp = document.getElementById("display");
+      disp.value = disp.value.slice(0, -1);
+    }
 
-function calculate() {
-  try {
-    const disp = document.getElementById("display");
-    disp.value = eval(disp.value);
-    justEvaluated = true;
-  } catch {
-    disp.value = "Error";
-    justEvaluated = true;
-  }
-}
+    function calculate() {
+      try {
+        const disp = document.getElementById("display");
+        disp.value = eval(disp.value);
+        justEvaluated = true;
+      } catch {
+        disp.value = "Error";
+        justEvaluated = true;
+      }
+    }
 
-// Handle keyboard input
-document.addEventListener("keydown", function (e) {
-  const key = e.key;
+    // Handle keyboard input
+    document.addEventListener("keydown", function (e) {
+      const key = e.key;
 
-  if (!isNaN(key) || key === '.') {
-    appendValue(key);
-  } else if (['+', '-', '*', '/'].includes(key)) {
-    appendValue(key);
-  } else if (key === 'Enter') {
-    e.preventDefault();
-    calculate();
-  } else if (key === 'Backspace') {
-    deleteLast();
-  } else if (key === 'Escape') {
-    clearDisplay();
-  }
-});
+      if (!isNaN(key) || key === '.') {
+        appendValue(key);
+      } else if (['+', '-', '*', '/'].includes(key)) {
+        appendValue(key);
+      } else if (key === 'Enter') {
+        e.preventDefault();
+        calculate();
+      } else if (key === 'Backspace') {
+        deleteLast();
+      } else if (key === 'Escape') {
+        clearDisplay();
+      }
+    });
 
   </script>
 </body>

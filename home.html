@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+.icon-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.icon-container span {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 16px;
+    flex-direction: row;
+}
+
+.social-icons a {
+    font-size: 32px;
+    color: #555;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.social-icons a:hover {
+    animation: bounce 0.6s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    60% { transform: translateY(5px); }
+}
+
+/* Icon colors on hover */
+.social-icons a.facebook:hover { color: #1877F2; text-shadow: 0 0 20px #1877F2; }
+.social-icons a.instagram:hover { color: #C13584; text-shadow: 0 0 20px #C13584; }
+.social-icons a.tiktok:hover { color: #fff; text-shadow: 0 0 20px #fff; }
+.social-icons a.linkedin:hover { color: #0077B5; text-shadow: 0 0 20px #0077B5; }
+.social-icons a.pinterest:hover { color: #E60023; text-shadow: 0 0 20px #E60023; }
+.social-icons a.youtube:hover { color: #FF0000; text-shadow: 0 0 20px #FF0000; }
+.social-icons a.google:hover { color: #DB4437; text-shadow: 0 0 20px #DB4437; }
+.social-icons a.x:hover { color: #fff; text-shadow: 0 0 20px #fff; }
+.social-icons a.threads:hover { color: #000; text-shadow: 0 0 20px #fff; }
+
+/* Mobile: smaller icons, no scroll, tight spacing */
+@media (max-width: 600px) {
+    .social-icons {
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+
+    .social-icons a {
+        font-size: 22px;
+        padding: 6px;
+    }
+
+    .icon-container span {
+        font-size: 15px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <!------NAVBAR SECTION---------->
+    <nav>
+        <div class="navbar-container">
+            <div class="top-row">
+                <div class="logo logo-animated" id="logo-text">CARS</div>
+                <div class="toggler" onclick="toggleMenu()">&#9776</div>
+            </div>
+            <div class="menu" id="menu">
+                <!--a href="#home" class="nav-link active">Home</a-->
+                <a href="#" class="nav-link dropbtn" onclick="dropdownMenu()">Projects &#9662;</a>
+                    <div class="dropdown">
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="projects/eCommerce.html">E-Commerce Demo</a>
+                            <a href="projects/todoList.html">Todo List</a>
+                            <a href="projects/calculator.html">Calculator</a>
+                            <a href="projects/calendar.html">Calendar</a>
+                        </div>
+                    </div>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a onclick="openLogin()" id="signUp-link">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!------SLIDER SECTION---------->
+    <div class="hero">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide" style="background-image: url('src/car-1.jpg');">
+                    <h2>Future Tech</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-2.webp');">
+                    <h2>Explore Nature</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-3.webp');">
+                    <h2>Urban Life</h2>
+                </div>
+                <div class="slide" style="background-image: url('src/car-4.webp');">
+                    <h2>Building New</h2>
+                </div>
+            </div>
+
+            <button class="nav-button prev" id="prevBtn">&#10094</button>
+            <button class="nav-button next" id="nextBtn">&#10095</button>
+
+            <div class="dots" id="dotsContainer"></div>
+        </div>
+    </div>
+
+        
+    <div class="popup" id="signupPopup" style="z-index: 3;">
+
+        <!------SIGN-UP SECTION (POP-UP)---------->
+        <div class="popup-content" id="signupForm" style="display: none;">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Sign Up</h2>
+            <form onsubmit="return validateSignup(event)">
+                <input type="text" id="signup-name" placeholder="Full Name" required />
+                <input type="email" id="signup-email" placeholder="Email" required />
+                <input type="password" id="signup-password" placeholder="Password" required />
+                <button type="submit">Register</button> 
+            </form>
+            <div class="sign-up-links">
+                <a href="#">Forgot Password</a> | 
+                <span href="#" style="margin-left: 5px;" onclick="switchToLogin()">Login</span>
+            </div>
+        </div>
+
+        <!------LOGIN SECTION (POP-UP)---------->
+        <div class="popup-content" id="loginForm" style="display: none;">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Login</h2>
+            <form id="signupForm" onsubmit="return validateLogin(event)">
+                <input type="email" id="login-email" placeholder="Email" required />
+                <input type="password" id="login-password" placeholder="Password" required />
+                <button type="submit">Login</button> 
+            </form>
+            <p class="sign-up-links">
+                <a href="#">Forgot Password</a> | 
+                <a href="#" style="margin-left: 5px;" onclick="switchToSignup()">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <!------FEATURES SECTION---------->
+
+    <!-- POP-UP -->
+    <div class="popup rating-box" id="ratingPopup" style="z-index: 4;">
+        <div class="popup-content">
+            <span class="close-btn" onclick="rateClose()">&times;</span>
+            <h2>Rate this Product</h2>
+            <div class="stars" id="starContainer">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <button id="submitRating" onclick="submitRate()">Submit</button>
+            <div class="message" id="messageBox"></div>
+        </div>
+    </div>
+
+    <!-- CARDS FEATURES ------------->
+    <section id="features">
+        <h2>Features</h2>
+        <div class="cards">
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/tesla.jpg" alt="Tesla">
+                    <div class="car-title">Tesla</div>
+                    <p class="car-desc">Electric vehicle pioneer offering high acceleration, minimalist design, and cutting-edge technology. 
+                        Features include Autopilot, over-the-air updates.</p>
+                    <div class="car-price">$79,990</div>
+                    <div class="car-specs">
+                        <div>⚡ 396 mi</div>
+                        <div>🚀 1.99s</div>
+                        <div>🔋 Dual Motor</div>
+                    </div>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/porsche.webp" alt="Tesla">
+                    <div class="car-title">Porsche</div>
+                    <p class="car-desc">Luxury performance brand famed for precise handling, turbocharged engines, and iconic design. 
+                        Models like the 911 and Cayenne feature high-end interiors.</p>
+                    <div class="car-price">$59,000</div>
+                    <div class="car-specs">
+                        <div>⚡ 220 mi</div>
+                        <div>🚀 2.80s</div>
+                        <div>🔋 Dual Motor</div>
+                    </div>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/mustang.jpg" alt="Tesla">
+                    <div class="car-title">Mustang</div>
+                    <p class="car-desc">Iconic American muscle car known for powerful engines, aggressive styling, and rear-wheel drive. 
+                        Offers V8 performance, driver-assist features.</p>
+                    <div class="car-price">$59,995</div>
+                    <div class="car-specs">
+                        <div>⚡ 270 mi</div>
+                        <div>🚀 1.89s</div>
+                        <div>🔋 Dual Motor</div>
+                    </div>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="car-card" id="popCard">
+                    <img src="src/chevrolet.jpg" alt="Tesla">
+                    <div class="car-title">Chevrolet</div>
+                    <p class="car-desc">Known for reliability and strong performance, and features like Chevy MyLink infotainment, advanced safety tech,
+                        and efficient engine options.</p>
+                    <div class="car-price">$39,990</div>
+                    <div class="car-specs">
+                        <div>⚡ 400 mi</div>
+                        <div>🚀 4.59s</div>
+                        <div>🔋 Dual Motor</div>
+                    </div>
+                    <div class="stars" onclick="rateOpen()">
+                        &#9733;&#9733;&#9733;&#9733;&#9734;
+                    </div>
+                    <a href="#" class="car-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!------ABOUT SECTION---------->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I'm a passionate Front-End Developer with a strong foundation in web technologies like HTML, CSS, JavaScript, React.js. I enjoy solving
+            complex problems and building modern, responsive web applications that deliver real value.
+        </p>
+        <p>
+            My goal is to continouosly grow as a developer by exploring new technologies and contributing to impactful projects. 
+            Whether it's frontend design or full -stack development, I strive to deliver clean, efficient, and engaging user experiences.
+        </p>
+    </section>
+
+    <!------CONTACT SECTION---------->
+    <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <p>You can reach me through the following:</p>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> norries.kent@gmail.com</p>
+            <p><strong>Phone:</strong> +6396 2594 6752</p>
+            <p><strong>Location:</strong> Tipolo, Mandaue City, Philippines</p>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!------FOOTER SECTION---------->
+    
+    <script src="logo.js"></script>
+    <script src="slider.js"></script>
+    <script src="toggleMenu.js"></script>
+    <script src="scroll-menu.js"></script>
+    <script src="sign-up.js"></script>
+    <script src="rating.js"></script>
+    <script src="dropdown.js"></script>
+    <script src="card.js"></script>
+</body>
+<footer>
+    <div class="icon-container"> 
+        <span>Follow me</span>
+        <div class="social-icons">
+            <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="threads" title="Threads"><i class="fab fa-threads"></i></a>
+            <a href="#" class="x" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="pinterest" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="google" title="Google+"><i class="fab fa-google-plus-g"></i></a>
+        </div>
+    </div>
+
+    <div class="link-pages">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#features" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth', block: 'start' }); return false;">Features</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#about" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' }); return false;">About</a></li>
+            <li><a href="#contact" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' }); return false;">Contact</a></li>
+        </ul>
+    </div>
+    <p>&copy; 2025 My Portfolio | All Rights Reserved</p>
+</footer>
+</html>
