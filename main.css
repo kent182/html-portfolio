@@ -4,18 +4,9 @@
     box-sizing: border-box;
 }
 body{
-    /*background-color: #e0e0e0;*/
-    color: #333;
+    background-color: #e0e0e0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(
-    135deg,
-    rgba(255, 105, 180, 0.6),
-    rgba(30, 144, 255, 0.6),
-    rgba(0, 255, 127, 0.6)
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-}
+} 
 html{
     scroll-behavior: smooth;
 }
